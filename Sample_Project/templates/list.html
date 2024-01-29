@@ -1,0 +1,19 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="{% static 'stylee.css' %}">
+    <hi>Product list</hi>
+</head>
+<body>
+<p>{{products.name}}</p>
+<ul>
+    {% for x in products %}
+    <li> {{x.name}} - {{x.description}}</li>
+
+    {% endfor %}
+</ul>
+</body>
+</html>

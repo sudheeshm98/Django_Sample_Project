@@ -1,6 +1,8 @@
+
 from django.http import HttpResponse
 from django.shortcuts import render
-from .models import product
+from django.template import loader
+from .models import Product
 
 # Create your views here.
 
@@ -12,3 +14,11 @@ def test_fun(request):
 
 def test_fun2(request):
     return render(request,'test2.html')
+
+def products(request):
+    pdts = Product.objects.all().values()
+    template = loader.get_template('list.html')
+    context = {
+        'products':pdts,
+    }
+    return HttpResponse(template.render(context,request))
